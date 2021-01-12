@@ -35,9 +35,9 @@ if($_POST["delete"]){
             $del_pass = $_POST["del_pass"];
             
             $sql = 'SELECT * FROM tbtest_5 WHERE id=:delete_id ';
-            $stmt = $pdo->prepare($sql);                  // ←差し替えるパラメータを含めて記述したSQLを準備し、
-            $stmt->bindParam(':delete_id', $delete_id, PDO::PARAM_INT); // ←その差し替えるパラメータの値を指定してから、
-            $stmt->execute();                             // ←SQLを実行する。
+            $stmt = $pdo->prepare($sql);                  
+            $stmt->bindParam(':delete_id', $delete_id, PDO::PARAM_INT); 
+            $stmt->execute();                             
             $results = $stmt->fetchAll(); 
                 foreach ($results as $row){
 		        $corr_pass = $row['pass'];
@@ -66,9 +66,9 @@ if($_POST["edit"]){
             $ed_pass = $_POST["ed_pass"];
             
             $sql = 'SELECT * FROM tbtest_5 WHERE id=:edit_id ';
-            $stmt = $pdo->prepare($sql);                  // ←差し替えるパラメータを含めて記述したSQLを準備し、
-            $stmt->bindParam(':edit_id', $edit_id, PDO::PARAM_INT); // ←その差し替えるパラメータの値を指定してから、
-            $stmt->execute();                             // ←SQLを実行する。
+            $stmt = $pdo->prepare($sql);               
+            $stmt->bindParam(':edit_id', $edit_id, PDO::PARAM_INT); 
+            $stmt->execute();                            
             $results = $stmt->fetchAll(); 
                 foreach ($results as $row){
 		        $corr_pass = $row['pass'];
@@ -76,9 +76,9 @@ if($_POST["edit"]){
                 if($corr_pass == $ed_pass){
 
                     $sql = 'SELECT * FROM tbtest_5 WHERE id=:edit_id ';
-                    $stmt = $pdo->prepare($sql);                  // ←差し替えるパラメータを含めて記述したSQLを準備し、
-                    $stmt->bindParam(':edit_id', $edit_id, PDO::PARAM_INT); // ←その差し替えるパラメータの値を指定してから、
-                    $stmt->execute();                             // ←SQLを実行する。
+                    $stmt = $pdo->prepare($sql);                
+                    $stmt->bindParam(':edit_id', $edit_id, PDO::PARAM_INT); 
+                    $stmt->execute();            
                     $results = $stmt->fetchAll(); 
                     foreach ($results as $row){
         		        $editNumber = $row['id'];
@@ -99,7 +99,7 @@ if($_POST["edit"]){
 #編集投稿
 if($_POST["toukou"] && !empty($_POST["ed_num"])){
     if(!empty($name) && !empty($comment) && !empty($pass)){
-        $ed_num = $_POST["ed_num"]; //変更する投稿番号
+        $ed_num = $_POST["ed_num"]; 
     	$sql = 'UPDATE tbtest_5 SET name=:name,comment=:comment, pass=:pass WHERE id=:ed_num';
     	$stmt = $pdo->prepare($sql);
     	$stmt->bindParam(':name', $name, PDO::PARAM_STR);
