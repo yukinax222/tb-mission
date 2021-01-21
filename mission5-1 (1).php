@@ -39,9 +39,9 @@ if(isset($_POST["delete"])){
             $del_pass = $_POST["del_pass"];
             
             $sql = 'SELECT * FROM tbtest_5 WHERE id=:delete_id ';
-            $stmt = $pdo->prepare($sql);                  // ←差し替えるパラメータを含めて記述したSQLを準備し、
-            $stmt->bindParam(':delete_id', $delete_id, PDO::PARAM_INT); // ←その差し替えるパラメータの値を指定してから、
-            $stmt->execute();                             // ←SQLを実行する。
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':delete_id', $delete_id, PDO::PARAM_INT);
+            $stmt->execute();
             $results = $stmt->fetchAll(); 
                 foreach ($results as $row){
 		        $corr_pass = $row['pass'];
@@ -70,9 +70,9 @@ if(isset($_POST["edit"])){
             $ed_pass = $_POST["ed_pass"];
             
             $sql = 'SELECT * FROM tbtest_5 WHERE id=:edit_id ';
-            $stmt = $pdo->prepare($sql);                  // ←差し替えるパラメータを含めて記述したSQLを準備し、
-            $stmt->bindParam(':edit_id', $edit_id, PDO::PARAM_INT); // ←その差し替えるパラメータの値を指定してから、
-            $stmt->execute();                             // ←SQLを実行する。
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':edit_id', $edit_id, PDO::PARAM_INT);
+            $stmt->execute();
             $results = $stmt->fetchAll(); 
                 foreach ($results as $row){
 		        $corr_pass = $row['pass'];
@@ -80,9 +80,9 @@ if(isset($_POST["edit"])){
                 if($corr_pass == $ed_pass){
 
                     $sql = 'SELECT * FROM tbtest_5 WHERE id=:edit_id ';
-                    $stmt = $pdo->prepare($sql);                  // ←差し替えるパラメータを含めて記述したSQLを準備し、
-                    $stmt->bindParam(':edit_id', $edit_id, PDO::PARAM_INT); // ←その差し替えるパラメータの値を指定してから、
-                    $stmt->execute();                             // ←SQLを実行する。
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindParam(':edit_id', $edit_id, PDO::PARAM_INT);
+                    $stmt->execute();
                     $results = $stmt->fetchAll(); 
                     foreach ($results as $row){
         		        $editNumber = $row['id'];
